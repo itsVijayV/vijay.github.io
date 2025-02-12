@@ -17,27 +17,36 @@
             background-color: #121212;
             color: white;
         }
+        .bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.2; /* Adjust this value (0.1 - 1) to control opacity */
+        }
         .container {
             padding: 20px;
             text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
         }
         .header {
-            background-color: #1f1f1f;
             padding: 20px;
             display: flex;
             align-items: center;
             justify-content: flex-end; /* Align buttons to the left */
             font-size: 2em;
             font-family: 'Modak', cursive;
-            position: sticky;
             top: 0;
             z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.7);
         }
         .nav-buttons {
         display: flex;
         gap: 15px;
         }
-
     .nav-buttons button {
         padding: 8px 16px; /* Reduced padding */
         border: none;
@@ -55,8 +64,9 @@
         .name-container {
             font-size: 2.5em;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 0px;
             font-family: sans-serif;
+            background-color: rgba(0, 0, 0, 0.7); /* Matches overall theme */
         }
         .subheader {
             font-size: 3em;
@@ -64,7 +74,9 @@
             color: #ffcc00;
             font-family: sans-serif;
         }
+
         .projects, .about, .contact {
+            background-color: rgba(0, 0, 0, 0.7);
             padding: 60px 20px;
         }
         .project-container {
@@ -108,23 +120,37 @@
             font-family: 'Bangers', cursive;
         }
         .about {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            background-color: #1a1a1a;
-            padding: 60px;
-        }
-        .about img {
-            border-radius: 50%;
-            width: 200px;
-            height: 200px;
-            margin-right: 30px;
-        }
-        .about p {
-            font-size: 1.4em;
-            max-width: 500px;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 60px;
+    color: white;
+    text-align: left; /* Align text to the left */
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    max-width: 900px; /* Set a limit for better layout */
+    gap: 30px; /* Space between image and text */
+}
+
+.about img {
+    width: 250px; /* Slightly larger */
+    height: 250px; /* Square shape */
+    border-radius: 10px; /* Slight rounded edges */
+    border: 4px solid #ffcc00; /* Yellow border */
+    flex-shrink: 0; /* Prevent image from resizing */
+}
+
+.about-text {
+    flex-grow: 1; /* Allows text to expand */
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
         .contact {
             text-align: center;
             padding: 60px 20px;
@@ -164,13 +190,6 @@
             width: 50px;
             height: 50px;
         }
-        footer {
-            background-color: #1f1f1f;
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9em;
-            color: #aaa;
-        }
         /* Responsive Design */
         @media (max-width: 768px) {
             .header {
@@ -185,7 +204,7 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: #1a1a1a;
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 60px;
     color: white;
     text-align: center; /* Center-align the content */
@@ -217,6 +236,11 @@
 </head>
 <body>
 
+    <video autoplay loop muted playsinline class="bg-video">
+        <source src="viddeos/Bg1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     <!-- Header Section -->
     <header class="header container">
         <!-- Removed the "Vijay V" name -->
@@ -224,7 +248,7 @@
             <button onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });">Projects</button>
             <button onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });">About Me</button>
             <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">Contact Me</button>
-            <a href="#" download>
+            <a href="resume.pdf" download>
                 <button>Resume</button>
             </a>
         </div>
@@ -241,27 +265,27 @@
     <h2>My Projects</h2>
     <div class="project-container">
         <div class="project-box">
-            <img src="images/DesertRunner.jpeg" alt="Desert Runner Screenshot">
+            <img src="images/DesetRunnerMain.jpeg" alt="Desert Runner Screenshot">
             <div>Desert Runner</div>
             <p>A fast-paced endless runner in the desert.</p>
             <a href="DesertRunner.html" target="_parent">View Demo</a>
         </div>
         <div class="project-box">
-            <img src="images/CarOpponent.png" alt="Car Racing Screenshot">
+            <img src="images/CarRaceMain.jpg" alt="Car Racing Screenshot">
             <div>Vintage Velocity</div>
             <p>An adrenaline-pumping car racing game.</p>
             <a href="CarRace.html" target="_parent">View Demo</a>
         </div>
         <div class="project-box">
-            <img src="images/ZombieLandMain.png" alt="ZombieLand Screenshot">
+            <img src="images/ZombieMain.jpg" alt="ZombieLand Screenshot">
             <div>ZombieLand</div>
             <p>A thrilling survival game against zombies.</p>
             <a href="ZombieLand.html" target="_parent">View Demo</a>
         </div>
         <div class="project-box">
             <img src="images/GameEnter4.jpeg" alt="Ancient Mysteries Screenshot">
-            <div>Ancient Mysteries</div>
-            <p>Explore ancient ruins and solve mysteries.</p>
+            <div>Project X</div>
+            <p>"Project X" is a fast-paced shooter where players infiltrate a high-tech lab, battle enemies, and take down an evil scientist.</p>
             <a href="FinalGame.html" target="_parent">View Demo</a>
         </div>
     </div>
@@ -270,16 +294,19 @@
 <section id="about" class="about container">
     <div class="about-content">
         <img src="images/MyPhoto.jpg" alt="Vijay V">
-        <p>
-            Hi, I'm Vijay V, a passionate Unity Game Developer and student with a deep love for creating immersive and interactive gaming experiences. 
-            I specialize in developing engaging game mechanics and bringing creative ideas to life through Unity.
-        </p>
-        <p>
-            Currently, I'm honing my skills in game development by working on various projects, ranging from fast-paced action games to intricate puzzle adventures. 
-            My journey includes building games like <strong>Desert Runner</strong>, an endless runner set in a vibrant desert, and <strong>ZombieLand</strong>, a thrilling survival game against hordes of zombies.
-        </p>
+        <div class="about-text">
+            <p>
+                Hi, I'm Vijay V, a passionate Unity Game Developer and student with a deep love for creating immersive and interactive gaming experiences.
+                I specialize in developing engaging game mechanics and bringing creative ideas to life through Unity.
+            </p>
+            <p>
+                Currently, I'm honing my skills in game development by working on various projects, ranging from fast-paced action games to intricate puzzle adventures.
+                My journey includes building games like <strong>Desert Runner</strong>, an endless runner set in a vibrant desert, and <strong>ZombieLand</strong>, a thrilling survival game against hordes of zombies.
+            </p>
+        </div>
     </div>
 </section>
+
 
         <!-- Contact Section -->
         <section id="contact" class="contact container">
@@ -300,11 +327,6 @@
             </div>
         </section>
     </main>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2023 Vijay V. All rights reserved.</p>
-    </footer>
 
 </body>
 </html>

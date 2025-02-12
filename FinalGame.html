@@ -12,8 +12,18 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #121212;
+            background-color: rgba(0, 0, 0);
             color: white;
+        }
+        .bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.2; /* Adjust this value (0.1 - 1) to control opacity */
         }
         .section {
             padding: 60px 20px;
@@ -21,12 +31,11 @@
         }
         /* Section 1: Header */
         .header {
-            background-color: #1f1f1f;
+            background-color: rgba(0, 0, 0, 0.7);
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            position: sticky;
             top: 0;
             z-index: 1000;
         }
@@ -49,7 +58,7 @@
         }
         
         /* Section 2: Game Details */
-        .game-details { background-color: #222; }
+        .game-details { background-color: rgba(0, 0, 0, 0.7); }
         .game-details p { font-size: 1.2em; }
         .game-buttons button {
             padding: 12px 20px;
@@ -67,7 +76,7 @@
         }
         
         /* Section 3: Gameplay */
-        .gameplay { background-color: #181818; }
+        .gameplay { background-color: rgba(0, 0, 0, 0.7); }
         .gameplay p {
     font-size: 1.2em;
     max-width: 80%;
@@ -130,7 +139,7 @@
 
         /* Contact Section */
         .contact {
-            background-color: #222;
+            background-color: rgba(0, 0, 0, 0.7);
             text-align: center;
             padding: 60px 20px;
         }
@@ -166,18 +175,13 @@
             width: 50px;
             height: 50px;
         }
-
-        /* Footer */
-        footer {
-            background-color: #1f1f1f;
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9em;
-            color: #aaa;
-        }
     </style>
 </head>
 <body>
+    <video autoplay loop muted playsinline class="bg-video">
+        <source src="viddeos/Bg1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
     <!-- Part 1: Header Section -->
     <header class="header">
         <div class="developer">Vijay V</div>
@@ -238,10 +242,5 @@
             </a>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2023 Vijay V. All rights reserved.</p>
-    </footer>
 </body>
 </html>
