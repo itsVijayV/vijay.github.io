@@ -25,7 +25,7 @@
             height: 100vh;
             object-fit: cover;
             z-index: -1;
-            opacity: 0.2; /* Adjust this value (0.1 - 1) to control opacity */
+            opacity: 0.2;
         }
         .container {
             padding: 20px;
@@ -36,7 +36,7 @@
             padding: 20px;
             display: flex;
             align-items: center;
-            justify-content: flex-end; /* Align buttons to the left */
+            justify-content: flex-end;
             font-size: 2em;
             font-family: 'Modak', cursive;
             top: 0;
@@ -44,29 +44,33 @@
             background-color: rgba(0, 0, 0, 0.7);
         }
         .nav-buttons {
-        display: flex;
-        gap: 15px;
+            display: flex;
+            gap: 15px;
         }
-    .nav-buttons button {
-        padding: 8px 16px; /* Reduced padding */
-        border: none;
-        cursor: pointer;
-        background-color: #ffcc00;
-        color: #121212;
-        font-size: 1em; /* Reduced font size */
-        border-radius: 5px;
-        transition: background-color 0.3s;
-    }
-
-    .nav-buttons button:hover {
-        background-color: #ffdb4d;
-    }
+        .nav-buttons button {
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            background-color: #ffcc00;
+            color: #121212;
+            font-size: 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .nav-buttons button:hover {
+            background-color: #ffdb4d;
+        }
+        .menu-icon {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
         .name-container {
             font-size: 2.5em;
             text-align: center;
             margin-top: 0px;
             font-family: sans-serif;
-            background-color: rgba(0, 0, 0, 0.7); /* Matches overall theme */
+            background-color: rgba(0, 0, 0, 0.7);
         }
         .subheader {
             font-size: 3em;
@@ -74,7 +78,6 @@
             color: #ffcc00;
             font-family: sans-serif;
         }
-
         .projects, .about, .contact {
             background-color: rgba(0, 0, 0, 0.7);
             padding: 60px 20px;
@@ -120,37 +123,33 @@
             font-family: 'Bangers', cursive;
         }
         .about {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 60px;
-    color: white;
-    text-align: left; /* Align text to the left */
-}
-
-.about-content {
-    display: flex;
-    align-items: center;
-    max-width: 900px; /* Set a limit for better layout */
-    gap: 30px; /* Space between image and text */
-}
-
-.about img {
-    width: 250px; /* Slightly larger */
-    height: 250px; /* Square shape */
-    border-radius: 10px; /* Slight rounded edges */
-    border: 4px solid #ffcc00; /* Yellow border */
-    flex-shrink: 0; /* Prevent image from resizing */
-}
-
-.about-text {
-    flex-grow: 1; /* Allows text to expand */
-    font-size: 1.2em;
-    line-height: 1.6;
-}
-
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 60px;
+            color: white;
+            text-align: left;
+        }
+        .about-content {
+            display: flex;
+            align-items: center;
+            max-width: 900px;
+            gap: 30px;
+        }
+        .about img {
+            width: 250px;
+            height: 250px;
+            border-radius: 10px;
+            border: 4px solid #ffcc00;
+            flex-shrink: 0;
+        }
+        .about-text {
+            flex-grow: 1;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
         .contact {
             text-align: center;
             padding: 60px 20px;
@@ -190,52 +189,63 @@
             width: 50px;
             height: 50px;
         }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .header {
+                justify-content: space-between;
+            }
+            .nav-buttons {
+                display: none;
+                flex-direction: column;
+                gap: 10px;
+                position: absolute;
+                top: 80px;
+                right: 20px;
+                background-color: rgba(0, 0, 0, 0.9);
+                padding: 20px;
+                border-radius: 10px;
+            }
+            .nav-buttons.active {
+                display: flex;
+            }
+            .menu-icon {
+                display: block;
+            }
+            .name-container {
+                font-size: 2em;
+            }
+            .subheader {
+                font-size: 2em;
+            }
+            .project-box {
+                width: 100%;
+                max-width: 300px;
+            }
+            .about-content {
                 flex-direction: column;
                 text-align: center;
             }
-            .nav-buttons {
-                margin-top: 10px;
+            .about img {
+                width: 200px;
+                height: 200px;
+                margin-bottom: 20px;
             }
-            .about {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 60px;
-    color: white;
-    text-align: center; /* Center-align the content */
-}
-
-.about-content {
-    max-width: 800px; /* Limit the width for better readability */
-}
-
-.about img {
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    border: 4px solid #ffcc00; /* Yellow border */
-    margin-bottom: 20px; /* Space between image and text */
-}
-
-.about p {
-    font-size: 1.2em;
-    line-height: 1.6;
-    margin-bottom: 15px; /* Space between paragraphs */
-}
-
-.about p strong {
-    color: #ffcc00; /* Highlight key phrases */
-}
+            .about-text {
+                font-size: 1em;
+            }
+            .contact a {
+                font-size: 1.2em;
+                padding: 8px 16px;
+            }
+            .contact-icons img {
+                width: 40px;
+                height: 40px;
+            }
         }
     </style>
 </head>
 <body>
-
     <video autoplay loop muted playsinline class="bg-video">
         <source src="viddeos/Bg1.mp4" type="video/mp4">
         Your browser does not support the video tag.
@@ -243,8 +253,8 @@
 
     <!-- Header Section -->
     <header class="header container">
-        <!-- Removed the "Vijay V" name -->
-        <div class="nav-buttons">
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <div class="nav-buttons" id="navButtons">
             <button onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });">Projects</button>
             <button onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });">About Me</button>
             <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">Contact Me</button>
@@ -260,53 +270,52 @@
         <div class="subheader container">Unity Developer</div>
 
         <!-- Projects Section -->
-        <!-- Projects Section -->
-<section id="projects" class="projects container">
-    <h2>My Projects</h2>
-    <div class="project-container">
-        <div class="project-box">
-            <img src="images/DesetRunnerMain.jpeg" alt="Desert Runner Screenshot">
-            <div>Desert Runner</div>
-            <p>A fast-paced endless runner in the desert.</p>
-            <a href="DesertRunner.html" target="_parent">View Demo</a>
-        </div>
-        <div class="project-box">
-            <img src="images/CarRaceMain.jpg" alt="Car Racing Screenshot">
-            <div>Vintage Velocity</div>
-            <p>An adrenaline-pumping car racing game.</p>
-            <a href="CarRace.html" target="_parent">View Demo</a>
-        </div>
-        <div class="project-box">
-            <img src="images/ZombieMain.jpg" alt="ZombieLand Screenshot">
-            <div>ZombieLand</div>
-            <p>A thrilling survival game against zombies.</p>
-            <a href="ZombieLand.html" target="_parent">View Demo</a>
-        </div>
-        <div class="project-box">
-            <img src="images/GameEnter4.jpeg" alt="Ancient Mysteries Screenshot">
-            <div>Project X</div>
-            <p>"Project X" is a fast-paced shooter where players infiltrate a high-tech lab, battle enemies, and take down an evil scientist.</p>
-            <a href="FinalGame.html" target="_parent">View Demo</a>
-        </div>
-    </div>
-</section>
+        <section id="projects" class="projects container">
+            <h2>My Projects</h2>
+            <div class="project-container">
+                <div class="project-box">
+                    <img src="images/DesetRunnerMain.jpeg" alt="Desert Runner Screenshot">
+                    <div>Desert Runner</div>
+                    <p>A fast-paced endless runner in the desert.</p>
+                    <a href="DesertRunner.html" target="_parent">View Demo</a>
+                </div>
+                <div class="project-box">
+                    <img src="images/CarRaceMain.jpg" alt="Car Racing Screenshot">
+                    <div>Vintage Velocity</div>
+                    <p>An adrenaline-pumping car racing game.</p>
+                    <a href="CarRace.html" target="_parent">View Demo</a>
+                </div>
+                <div class="project-box">
+                    <img src="images/ZombieMain.jpg" alt="ZombieLand Screenshot">
+                    <div>ZombieLand</div>
+                    <p>A thrilling survival game against zombies.</p>
+                    <a href="ZombieLand.html" target="_parent">View Demo</a>
+                </div>
+                <div class="project-box">
+                    <img src="images/GameEnter4.jpeg" alt="Ancient Mysteries Screenshot">
+                    <div>Project X</div>
+                    <p>"Project X" is a fast-paced shooter where players infiltrate a high-tech lab, battle enemies, and take down an evil scientist.</p>
+                    <a href="FinalGame.html" target="_parent">View Demo</a>
+                </div>
+            </div>
+        </section>
 
-<section id="about" class="about container">
-    <div class="about-content">
-        <img src="images/MyPhoto.jpg" alt="Vijay V">
-        <div class="about-text">
-            <p>
-                Hi, I'm Vijay V, a passionate Unity Game Developer and student with a deep love for creating immersive and interactive gaming experiences.
-                I specialize in developing engaging game mechanics and bringing creative ideas to life through Unity.
-            </p>
-            <p>
-                Currently, I'm honing my skills in game development by working on various projects, ranging from fast-paced action games to intricate puzzle adventures.
-                My journey includes building games like <strong>Desert Runner</strong>, an endless runner set in a vibrant desert, and <strong>ZombieLand</strong>, a thrilling survival game against hordes of zombies.
-            </p>
-        </div>
-    </div>
-</section>
-
+        <!-- About Section -->
+        <section id="about" class="about container">
+            <div class="about-content">
+                <img src="images/MyPhoto.jpg" alt="Vijay V">
+                <div class="about-text">
+                    <p>
+                        Hi, I'm Vijay V, a passionate Unity Game Developer and student with a deep love for creating immersive and interactive gaming experiences.
+                        I specialize in developing engaging game mechanics and bringing creative ideas to life through Unity.
+                    </p>
+                    <p>
+                        Currently, I'm honing my skills in game development by working on various projects, ranging from fast-paced action games to intricate puzzle adventures.
+                        My journey includes building games like <strong>Desert Runner</strong>, an endless runner set in a vibrant desert, and <strong>ZombieLand</strong>, a thrilling survival game against hordes of zombies.
+                    </p>
+                </div>
+            </div>
+        </section>
 
         <!-- Contact Section -->
         <section id="contact" class="contact container">
@@ -328,5 +337,11 @@
         </section>
     </main>
 
+    <script>
+        function toggleMenu() {
+            const navButtons = document.getElementById("navButtons");
+            navButtons.classList.toggle("active");
+        }
+    </script>
 </body>
 </html>

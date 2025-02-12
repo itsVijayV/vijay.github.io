@@ -23,7 +23,7 @@
             height: 100vh;
             object-fit: cover;
             z-index: -1;
-            opacity: 0.2; /* Adjust this value (0.1 - 1) to control opacity */
+            opacity: 0.2;
         }
         .section {
             padding: 60px 20px;
@@ -42,9 +42,12 @@
         .header .developer {
             font-size: 2em;
         }
+        .header .buttons {
+            display: flex;
+            gap: 10px;
+        }
         .header .buttons button {
             padding: 10px 15px;
-            margin-left: 10px;
             border: none;
             cursor: pointer;
             font-size: 1em;
@@ -55,6 +58,11 @@
         .resume { background-color: #007BFF; color: white; }
         .header .buttons button:hover {
             opacity: 0.8;
+        }
+        .menu-icon {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
         }
         
         /* Section 2: Game Details */
@@ -78,13 +86,12 @@
         /* Section 3: Gameplay */
         .gameplay { background-color: rgba(0, 0, 0, 0.7); }
         .gameplay p {
-    font-size: 1.2em;
-    max-width: 80%;
-    margin: 20px auto;
-    text-align: justify;
-    line-height: 1.6;
-}
-
+            font-size: 1.2em;
+            max-width: 80%;
+            margin: 20px auto;
+            text-align: justify;
+            line-height: 1.6;
+        }
         iframe {
             width: 80%;
             height: 400px;
@@ -95,8 +102,8 @@
         /* Section 4: Screenshots */
         .screenshots-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 columns */
-            gap: 25px; /* Increased gap between images */
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
             justify-content: center;
             max-width: 80%;
             margin: auto;
@@ -108,10 +115,10 @@
         }
         .screenshots-container img:nth-child(1),
         .screenshots-container img:nth-child(2) {
-            height: 300px; /* Increased height for top row */
+            height: 300px;
         }
         .screenshots-container img {
-            height: 350px; /* Increased height for all images */
+            height: 350px;
             object-fit: cover;
         }
         .screenshots img:hover {
@@ -129,7 +136,16 @@
                 text-align: center;
             }
             .header .buttons {
+                display: none;
+                flex-direction: column;
+                gap: 10px;
                 margin-top: 10px;
+            }
+            .header .buttons.active {
+                display: flex;
+            }
+            .menu-icon {
+                display: block;
             }
             iframe {
                 width: 100%;
@@ -192,10 +208,12 @@
         <source src="viddeos/Bg1.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
+
     <!-- Part 1: Header Section -->
     <header class="header">
         <div class="developer">Vijay V</div>
-        <div class="buttons">
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <div class="buttons" id="navButtons">
             <button class="main-menu" onclick="window.location.href='index.html'" aria-label="Go to Main Menu">Main Menu</button>
             <button class="resume" onclick="window.location.href='resume.pdf'" aria-label="Download Resume">Download Resume</button>
         </div>
@@ -254,5 +272,17 @@
             </a>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2023 Vijay V. All rights reserved.
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navButtons = document.getElementById("navButtons");
+            navButtons.classList.toggle("active");
+        }
+    </script>
 </body>
 </html>
