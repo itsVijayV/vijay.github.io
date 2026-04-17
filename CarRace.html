@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vintage Velocity | Vijay V</title>
+    <title>CarRace | Vijay V</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
+        /* Base Styles & Variables (Trent Polack Style) */
         :root {
             --primary: #181A22;
             --secondary: #FF6B26;
@@ -56,6 +57,7 @@
             margin: 60px 0;
         }
 
+        /* --- Utility Classes --- */
         .section-title {
             text-align: center;
             font-size: 2.2rem;
@@ -76,6 +78,7 @@
             background-color: var(--secondary);
         }
 
+        /* --- Header --- */
         header {
             display: flex;
             justify-content: space-between;
@@ -163,6 +166,7 @@
             box-shadow: 0 5px 15px rgba(255, 107, 38, 0.3);
         }
 
+        /* --- Game Details Section --- */
         .game-details-section {
             padding-bottom: 40px;
             text-align: center;
@@ -233,6 +237,7 @@
             box-shadow: 0 5px 15px rgba(255, 107, 38, 0.4);
         }
 
+        /* --- Gameplay Video Section --- */
         .gameplay-section {
             padding: 40px 0;
         }
@@ -321,6 +326,7 @@
             font-size: 1.05rem;
         }
 
+        /* --- Screenshots Grid --- */
         .screenshots-section {
             padding: 40px 0;
         }
@@ -363,6 +369,73 @@
             transform: scale(1.05);
         }
 
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--green-play);
+            color: var(--light);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 2;
+            opacity: 0;
+            visibility: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .screenshot-item:hover .play-button {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .play-button:hover {
+            background-color: #3e8e41;
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        .score-ui {
+            background-color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+
+        .score-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--score-orange);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--score-text);
+            font-family: 'Orbitron', sans-serif;
+            padding: 30px;
+            text-align: center;
+            gap: 15px;
+        }
+
+        .score-overlay p {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .score-overlay p:first-child {
+            font-size: 2.5rem;
+            color: var(--dark);
+            font-weight: 800;
+        }
+
+        /* --- Features Section --- */
         .features-section {
             padding: 60px 0;
             background-color: var(--dark-blue);
@@ -409,6 +482,7 @@
             font-size: 0.95rem;
         }
 
+        /* --- Contact Section --- */
         .contact-section {
             padding: 80px 0 100px 0;
             text-align: center;
@@ -422,7 +496,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 50% 0%, rgba(253, 200, 147, 0.1), transparent 70%);
+            background: radial-gradient(circle at 50% 0%, var(--light-orange-bg) 0%, transparent 70%);
             pointer-events: none;
         }
 
@@ -472,6 +546,7 @@
             box-shadow: 0 10px 20px rgba(255, 107, 38, 0.4);
         }
 
+        /* --- Modal Styles --- */
         .modal {
             display: none;
             position: fixed;
@@ -533,37 +608,121 @@
             transform: rotate(90deg);
         }
 
+        /* --- Responsive Adjustments --- */
         @media (max-width: 992px) {
-            .page-title { font-size: 2.5rem; }
-            .details-box { flex-direction: column; text-align: center; gap: 30px; padding: 30px; }
-            .meta-info { text-align: center; grid-template-columns: 1fr; gap: 10px; }
-            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .details-box {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+                padding: 30px;
+            }
+
+            .meta-info {
+                text-align: center;
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
-            .container { padding-top: 80px; width: 95%; }
-            .page-title { font-size: 2rem; }
-            .section-title { font-size: 1.8rem; }
-            nav { gap: 10px; }
-            .nav-link { padding: 6px 12px; font-size: 0.9rem; }
-            .btn { padding: 8px 20px; font-size: 0.9rem; }
-            .screenshots-grid { grid-template-columns: 1fr; }
-            .features-grid { grid-template-columns: 1fr; }
-            .social-links { gap: 15px; }
-            .social-icon { width: 50px; height: 50px; font-size: 1.3rem; }
+            .container {
+                padding-top: 80px;
+                width: 95%;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            nav {
+                gap: 10px;
+            }
+            
+            .nav-link {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .btn {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+
+            .screenshots-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                gap: 15px;
+            }
+
+            .social-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
         }
 
         @media (max-width: 480px) {
-            header { flex-direction: column; gap: 15px; padding: 15px; }
-            nav { width: 100%; justify-content: center; }
-            .page-title { font-size: 1.8rem; }
-            .details-box { padding: 20px; }
-            .btn-features { padding: 10px 20px; font-size: 1rem; }
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+            
+            nav {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .details-box {
+                padding: 20px;
+            }
+            
+            .btn-features {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+            
+            .score-overlay p {
+                font-size: 1.3rem;
+            }
+            
+            .score-overlay p:first-child {
+                font-size: 1.8rem;
+            }
         }
 
+        /* --- Animation --- */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .animate-fade-in {
@@ -588,7 +747,7 @@
             <div class="details-box">
                 <div class="meta-info">
                     <p><strong>Role:</strong></p><p>Game Programmer & Game Developer</p>
-                    <p><strong>Duration:</strong></p><p>2 Weeks</p>
+                    <p><strong>Duration:</strong></p><p>2 Week</p>
                     <p><strong>Team:</strong></p><p>Solo Project</p>
                     <p><strong>Platform:</strong></p><p>PC / WebGL</p>
                     <p><strong>Engine:</strong></p><p>Unity 2022.3</p>
@@ -604,8 +763,8 @@
             <h2 class="section-title">Gameplay Video</h2>
             <div class="video-container">
                 <div class="youtube-player" id="videoPlayer">
-                    <img src="images/CarRace.png" 
-                         alt="Vintage Velocity gameplay preview" 
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071&auto=format&fit=crop" 
+                         alt="Desert Runner gameplay preview showing character running through desert" 
                          class="video-placeholder">
                     <div class="video-overlay"></div>
                     <i class="fa-brands fa-youtube play-icon"></i>
@@ -614,7 +773,7 @@
 
             <div class="description-box">
                 <h3>Game Description</h3>
-                <p>Vintage Velocity is a fast-paced 3D racing game featuring three exciting modes: Free Look, where players can explore the track at their own pace; Against Time, where they race against the clock to set the best lap time; and Against Player, where they compete head-to-head for victory. With smooth controls, realistic car physics, and immersive tracks, the game offers a thrilling racing experience for both casual and competitive players.</p>
+                <p>Car Race is a fast-paced 3D racing game featuring three exciting modes Free Look, where players can explore the track at their own pace. Against Time, where they race against the clock to set the best lap time and Against Player, where they compete head-to-head for victory. With smooth controls, realistic car physics, and immersive tracks, the game offers a thrilling racing experience for both casual and competitive players.</p>
             </div>
         </section>
         
@@ -624,22 +783,33 @@
             <h2 class="section-title">Key Features & Technical Details</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-code"></i></div>
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
                     <h4>C# Programming</h4>
                     <p>Clean, modular C# code with optimized racing mechanics, efficient AI vehicle control, and smooth checkpoint and collision detection systems.</p>
                 </div>
+                
                 <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-gamepad"></i></div>
-                    <h4>Dynamic Racing Elements</h4>
-                    <p>Multiple race elements with unique behaviors: AI opponent cars with varying speeds, sharp turns and track curves, boost zones for speed increase, and dynamic weather effects affecting vehicle control.</p>
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+                    <h4>Dynamic Obstacles</h4>
+                    <p>Multiple race elements with unique behaviors: AI opponent cars with varying speeds, sharp turns and track curves, boost zones for speed increase, and dynamic weather effects like rain affecting vehicle control.</p>
                 </div>
+                
                 <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
                     <h4>Progressive Difficulty</h4>
                     <p>Increasing vehicle speed and opponent competitiveness over time, with boost systems and score multipliers to enhance racing performance.</p>
                 </div>
+                
                 <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-palette"></i></div>
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
                     <h4>Visual Polish</h4>
                     <p>Custom city-themed environments, realistic vehicle effects, smooth animations, and dynamic lighting to enhance the racing experience.</p>
                 </div>
@@ -660,22 +830,23 @@
                 
                 <div class="screenshot-item" data-modal="modal1">
                     <img src="images/CarSelect.png" 
-                         alt="Vintage Velocity - car selection screen">
+                         alt="Desert Runner gameplay - character jumping over cactus obstacle">
+                         <!-- <button class="play-button">PLAY</button> -->
                 </div>
 
                 <div class="screenshot-item" data-modal="modal2">
                     <img src="images/CarRace.png" 
-                         alt="Vintage Velocity - racing gameplay">
+                         alt="Desert Runner - main menu with start and options buttons">
                 </div>
 
                 <div class="screenshot-item" data-modal="modal3">
                     <img src="images/CarOpponent.png" 
-                         alt="Vintage Velocity - racing against opponent">
+                         alt="Desert Runner gameplay - night mode with glowing obstacles">
                 </div>
 
-                <div class="screenshot-item" data-modal="modal4">
+                <div class="screenshot-item" data-modal="modal3">
                     <img src="images/CarFreeMode.png" 
-                         alt="Vintage Velocity - free mode exploration">
+                         alt="Desert Runner gameplay - night mode with glowing obstacles">
                 </div>
 
             </div>
@@ -690,9 +861,15 @@
             </p>
             
             <div class="social-links">
-                <a href="mailto:v.vijaybca2002@gmail.com" class="social-icon"><i class="fa-solid fa-envelope"></i></a>
-                <a href="https://github.com/itsVijayV" target="_blank" class="social-icon"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/vijayveeramani2002/" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="mailto:v.vijaybca2002@gmail.com" class="social-icon" aria-label="Send me an email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="https://github.com/itsVijayV" target="_blank" class="social-icon" aria-label="Visit my GitHub profile">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/vijayveeramani2002/" target="_blank" class="social-icon" aria-label="Connect on LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
             </div>
             
             <p style="color: var(--gray); margin-top: 40px; font-size: 0.9rem;">
@@ -702,22 +879,73 @@
 
     </main>
 
+    <!-- Modal for enlarged screenshots -->
     <div class="modal" id="imageModal">
         <div class="modal-content">
-            <button class="modal-close">&times;</button>
+            <button class="modal-close" aria-label="Close modal">&times;</button>
             <img src="" alt="" class="modal-img" id="modalImage">
         </div>
     </div>
 
     <script>
+        // Wait for DOM to load
         document.addEventListener('DOMContentLoaded', function() {
-            // Video Player Functionality
+            
+            // --- Video Player Functionality ---
             const videoPlayer = document.getElementById('videoPlayer');
+            const videoPlaceholder = videoPlayer.querySelector('.video-placeholder');
+            
             videoPlayer.addEventListener('click', function() {
-                this.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/1WBGb6cUMvQ?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Vintage Velocity Gameplay"></iframe>`;
+                // Replace placeholder with YouTube embed
+                const videoId = 'dQw4w9WgXcQ'; // Replace with actual Desert Runner video ID
+                this.innerHTML = `
+                    <iframe 
+                        width="100%" 
+                        height="100%" 
+                        src="https://www.youtube.com/embed/1WBGb6cUMvQ" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        title="Desert Runner Gameplay Video">
+                    </iframe>
+                `;
             });
 
-            // Screenshot Modal Functionality
+            // --- PLAY Button Functionality ---
+            const playButtons = document.querySelectorAll('.play-button');
+            playButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    // In a real implementation, this would launch the game
+                    // For demo purposes, show a message
+                    const modal = document.createElement('div');
+                    modal.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.9);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        z-index: 9999;
+                    `;
+                    modal.innerHTML = `
+                        <div style="background: var(--card-bg); padding: 40px; border-radius: 10px; max-width: 500px; width: 90%; border: 3px solid var(--secondary); text-align: center;">
+                            <h3 style="color: var(--secondary); margin-bottom: 20px;">Play Desert Runner</h3>
+                            <p style="color: var(--gray); margin-bottom: 30px;">In a full implementation, this would launch the game or open a WebGL build.</p>
+                            <div style="display: flex; gap: 15px; justify-content: center;">
+                                <button onclick="window.open('https://your-game-url.com', '_blank')" style="background: var(--secondary); color: var(--accent); border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: 600;">Play Online</button>
+                                <button onclick="this.parentElement.parentElement.parentElement.remove()" style="background: transparent; color: var(--secondary); border: 2px solid var(--secondary); padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: 600;">Close</button>
+                            </div>
+                        </div>
+                    `;
+                    document.body.appendChild(modal);
+                });
+            });
+
+            // --- Screenshot Modal Functionality ---
             const screenshotItems = document.querySelectorAll('.screenshot-item');
             const imageModal = document.getElementById('imageModal');
             const modalImage = document.getElementById('modalImage');
@@ -725,45 +953,54 @@
             
             screenshotItems.forEach(item => {
                 item.addEventListener('click', function(e) {
-                    const imgElement = this.querySelector('img');
-                    if (imgElement) {
-                        modalImage.src = imgElement.src;
-                        modalImage.alt = imgElement.alt;
+                    if (!e.target.classList.contains('play-button')) {
+                        const imgSrc = this.querySelector('img').src;
+                        const imgAlt = this.querySelector('img').alt;
+                        
+                        modalImage.src = imgSrc;
+                        modalImage.alt = imgAlt;
                         imageModal.classList.add('active');
                         document.body.style.overflow = 'hidden';
                     }
                 });
             });
 
-            modalClose.addEventListener('click', function() {
-                imageModal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
-            
+            // Close modal
+            modalClose.addEventListener('click', closeModal);
             imageModal.addEventListener('click', function(e) {
                 if (e.target === this) {
-                    imageModal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
+                    closeModal();
                 }
             });
 
+            // Close modal with Escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && imageModal.classList.contains('active')) {
-                    imageModal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
+                    closeModal();
                 }
             });
 
-            // Resume Button
-            const resumeBtn = document.querySelector('.resume-btn');
-            if (resumeBtn) {
-                resumeBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    window.open('VijayResume.pdf', '_blank');
-                });
+            function closeModal() {
+                imageModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
             }
 
-            // Smooth scrolling for anchor links
+            // --- Resume Button ---
+            const resumeBtn = document.querySelector('.resume-btn');
+            resumeBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Open resume in new tab
+                window.open('VijayResume.pdf', '_blank');
+            });
+
+            // --- GitHub Link ---
+            const githubBtn = document.querySelector('a[href*="github"]');
+            githubBtn.addEventListener('click', function(e) {
+                // You can add analytics or other tracking here
+                console.log('GitHub link clicked');
+            });
+
+            // --- Smooth scrolling for anchor links ---
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
@@ -780,25 +1017,60 @@
                 });
             });
 
-            // Header scroll effect
+            // --- Header scroll effect ---
             window.addEventListener('scroll', function() {
                 const header = document.querySelector('header');
                 if (window.scrollY > 50) {
                     header.style.backgroundColor = 'rgba(10, 52, 92, 0.98)';
+                    header.style.backdropFilter = 'blur(10px)';
                 } else {
                     header.style.backgroundColor = 'rgba(10, 52, 92, 0.95)';
                 }
             });
 
-            // Animation on scroll
-            const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+            // --- Add animation to elements on scroll ---
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('animate-fade-in');
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                    }
                 });
             }, observerOptions);
 
-            document.querySelectorAll('.feature-card, .description-box, .screenshot-item').forEach(el => observer.observe(el));
+            // Observe elements
+            document.querySelectorAll('.feature-card, .description-box, .screenshot-item').forEach(el => {
+                observer.observe(el);
+            });
+
+            // --- Preload images for better performance ---
+            const imagesToPreload = [
+                'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?q=80&w=2070&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=2070&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1518834103328-93d45986dce1?q=80&w=2070&auto=format&fit=crop'
+            ];
+
+            imagesToPreload.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            // Close modal on mobile orientation change
+            if (window.innerWidth <= 768) {
+                const modal = document.getElementById('imageModal');
+                if (modal.classList.contains('active')) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
         });
     </script>
 
